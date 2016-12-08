@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# This file is part of pictaggr
+# https://github.com/mgafner/pictaggr
+#                                                                                
+# pictaggr is free software: you can redistribute it and/or modify                 
+# it under the terms of the GNU General Public License as published by            
+# the Free Software Foundation, either version 3 of the License, or               
+# (at your option) any later version.                                             
+#                                                                                
+# pictaggr is distributed in the hope that it will be useful,                      
+# but WITHOUT ANY WARRANTY; without even the implied warranty of                  
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the                   
+# GNU General Public License for more details.                                    
+#                                                                                
+# You should have received a copy of the GNU General Public License               
+# along with pictaggr.  If not, see <http://www.gnu.org/licenses/>.
+
+
+WORKDIR=~/Pictures/pictaggr
+CURDIR=`pwd`
+
+cd "$WORKDIR"
+for D in *; do
+    if [ -d "$D" ]; then
+        echo "$D"
+        cd "$D"
+        IFS='_' read -ra TAGS <<< "$D"
+        for F in *; do
+          if [ -f "$F" ]; then
+            for TAG in "${TAGS[@]}"; do
+              echo "$D/$F <- $TAG"
+              # tagging of picture with exiftool is coming here
+            done
+          fi
+        done
+        cd ..
+    fi
+done
+
+cd "$CURDIR"
+
