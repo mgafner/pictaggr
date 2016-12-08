@@ -7,7 +7,7 @@ given a directory of jpeg pictures:
 ~/Pictures/20160613_Ferien_Antalya_Public
 ```
 
-your pictures will get these exif tags:
+your pictures in that directory will get these exif tags:
 ```
 20160613
 Ferien
