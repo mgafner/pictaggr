@@ -17,6 +17,19 @@ Public
 
 pictaggr exif tags will be compatible to [shotwell](https://wiki.gnome.org/Apps/Shotwell/) exif tags
 
+[shotwell](https://wiki.gnome.org/Apps/Shotwell/) is writing such tags in the *Keyword* exif tag:
+```
+mgafner@puzzle:~/$ exiftool -Keywords ~/Pictures/184631.jpg
+Keywords                        : 20160613, Ferien, Antalya, Public
+```
+
+To write the tag as we want:
+```
+mgafner@puzzle:~/$ exiftool -Keywords="20160613, Ferien, Antalya, Public" ~/Pictures/184631.jpg
+    1 image files updated
+```
+
+
 ## Installation
 #### Prerequisites
    * exiftool
